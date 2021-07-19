@@ -13,7 +13,7 @@ public class TaskRepository {
     private static final Map<Long, Task> todoList = new HashMap<>();
     private static long sequence = 0L;
 
-    public Task write(Task task) {
+    public Task save(Task task) {
         task.setId(++sequence);
         todoList.put(task.getId(), task);
         return task;
