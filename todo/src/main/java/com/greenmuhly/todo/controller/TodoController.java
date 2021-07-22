@@ -1,7 +1,7 @@
 package com.greenmuhly.todo.controller;
 
-import com.greenmuhly.todo.domain.Task;
-import com.greenmuhly.todo.domain.TaskRepository;
+import com.greenmuhly.todo.domain.Todo;
+import com.greenmuhly.todo.domain.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,19 +18,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TodoController {
 
-    private final TaskRepository taskRepository;
+    private final TodoRepository todoRepository;
 
     @GetMapping
-    public String tasks(Model model) {
-        List<Task> tasks = taskRepository.findAll();
-        model.addAttribute("tasks", tasks);
+    public String todos(Model model) {
+        List<Todo> todos = todoRepository.findAll();
+        model.addAttribute("todos", todos);
         return "v1/todos";
     }
 
-    @GetMapping("/{taskId}")
-    public String task(@PathVariable long taskId, Model model) {
-        Task task = taskRepository.findById(taskId);
-        model.addAttribute("task", task);
+    @GetMapping("/{todoId}")
+    public String todo(@PathVariable long todoId, Model model) {
+        Todo todo = todoRepository.findById(todoId);
+        model.addAttribute("todo", todo);
         return "v1/todo";
     }
 
@@ -40,24 +40,24 @@ public class TodoController {
     }
 
     @PostMapping("/add")
-    public String addTask(Task task, RedirectAttributes redirectAttributes) {
-        Task savedTask = taskRepository.save(task);
-        redirectAttributes.addAttribute("taskId", savedTask);
+    public String addtodo(Todo todo, RedirectAttributes redirectAttributes) {
+        Todo savedTodo = todoRepository.save(todo);
+        redirectAttributes.addAttribute("todoId", savedTodo);
         redirectAttributes.addAttribute("status", true);
-        return "redirect:/v1/todos/{taskId}";
+        return "redirect:/v1/todos/{todoId}";
     }
 
-    @GetMapping("/{taskId}/edit")
-    public String editForm(@PathVariable Long taskId, Model model) {
-        Task task = taskRepository.findById(taskId);
-        model.addAttribute("task", task);
+    @GetMapping("/{todoId}/edit")
+    public String editForm(@PathVariable Long todoId, Model model) {
+        Todo todo = todoRepository.findById(todoId);
+        model.addAttribute("todo", todo);
         return "v1/editForm";
     }
 
-    @PostMapping("/{taskId}/edit")
-    public String edit(@PathVariable Long taskId, @ModelAttribute Task task) {
-        taskRepository.update(taskId, task);
-        return "redirect:v1/todos/{taskId}";
+    @PostMapping("/{todoId}/edit")
+    public String edit(@PathVariable Long todoId, @ModelAttribute Todo todo) {
+        todoRepository.update(todoId, todo);
+        return "redirect:v1/todos/{todoId}";
     }
 
     /**
@@ -66,7 +66,7 @@ public class TodoController {
 
     @PostConstruct
     public void init() {
-        taskRepository.save(new Task("taskA", "hello spring"));
-        taskRepository.save(new Task("taskB", "hello java"));
+        todoRepository.save(new Todo("todoA", "hello spring"));
+        todoRepository.save(new Todo("todoB", "hello java"));
     }
 }
