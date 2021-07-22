@@ -8,14 +8,14 @@
 <body>
 <div class="container" style="max-width: 600px">
   <div class="py-5 text-center">
-    <h2>상품 목록</h2>
+    <h2>Todo 목록</h2>
   </div>
   <div class="row">
     <div class="col">
       <button class="btn btn-primary float-end"
               onclick="location.href='addForm.html'"
-              th:onclick="|location.href='@{/basic/items/add}'|"
-              type="button">상품 등록</button>
+              th:onclick="|location.href='@{/basic/todos/add}'|"
+              type="button">add Todo</button>
     </div>
   </div>
   <hr class="my-4">
@@ -23,17 +23,17 @@
     <table class="table">
       <thead>
       <tr> <th>ID</th>
-        <th>상품명</th>
-        <th>가격</th>
-        <th>수량</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>날짜</th>
       </tr>
       </thead>
       <tbody>
-      <tr th:each="item : ${items}">
-        <td><a href="item.html" th:href="@{|/basic/items/${item.id}|}" th:text="${item.id}">회원 id</a></td>
-        <td><a href="item.html" th:href="@{|/basic/items/${item.id}|}" th:text="${item.itemName}">상품명</a></td>
-        <td th:text="${item.price}">10000</td>
-        <td th:text="${item.quantity}">10</td>
+      <tr th:each="todo : ${todos}">
+        <td><a href="todo.html" th:href="@{|/basic/todos/${todo.id}|}" th:text="${todo.id}">todo id</a></td>
+        <td><a href="todo.html" th:href="@{|/basic/todos/${todo.id}|}" th:text="${todo.title}">제목</a></td>
+        <td th:text="${todo.content}">내용</td>
+        <td th:text="${todo.createDate}">날짜</td>
       </tr>
       </tbody>
     </table>
