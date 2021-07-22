@@ -19,37 +19,37 @@
   <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
 
   <div>
-    <label for="itemId">상품 ID</label>
-    <input type="text" id="itemId" name="itemId" class="form-control"
-           value="1" th:value="${item.id}" readonly>
+    <label for="todoId">상품 ID</label>
+    <input type="text" id="todoId" name="todoId" class="form-control"
+           value="1" th:value="${todo.id}" readonly>
   </div>
   <div>
-    <label for="itemName">상품명</label>
-    <input type="text" id="itemName" name="itemName" class="form-control"
-           value="상품A" th:value="${item.itemName}" readonly>
+    <label for="todoName">상품명</label>
+    <input type="text" id="todoName" name="todoName" class="form-control"
+           value="상품A" th:value="${todo.todoName}" readonly>
   </div>
   <div>
     <label for="price">가격</label>
     <input type="text" id="price" name="price" class="form-control"
-           value="10000" th:value="${item.price}" readonly>
+           value="10000" th:value="${todo.price}" readonly>
   </div>
   <div>
     <label for="quantity">수량</label>
     <input type="text" id="quantity" name="quantity" class="form-control"
-           value="10" th:value="${item.quantity}" readonly>
+           value="10" th:value="${todo.quantity}" readonly>
   </div>
   <hr class="my-4">
   <div class="row">
     <div class="col">
       <button class="w-100 btn btn-primary btn-lg"
               onclick="location.href='editForm.html'"
-              th:onclick="|location.href='@{/basic/items/{itemId}/edit(itemId=${item.id})}'|"
+              th:onclick="|location.href='@{/basic/todos/{todoId}/edit(todoId=${todo.id})}'|"
               type="button">상품 수정</button>
     </div>
     <div class="col">
       <button class="w-100 btn btn-secondary btn-lg"
-              onclick="location.href='items.html'"
-              th:onclick="|location.href='@{/basic/items}'|"
+              onclick="location.href='todos.html'"
+              th:onclick="|location.href='@{/basic/todos}'|"
               type="button">목록으로</button>
     </div>
   </div>
