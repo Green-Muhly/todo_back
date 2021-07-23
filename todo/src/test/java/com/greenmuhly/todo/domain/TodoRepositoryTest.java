@@ -1,6 +1,5 @@
 package com.greenmuhly.todo.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +19,7 @@ class TodoRepositoryTest {
     @Test
     void save() {
         //given
-        Todo todo = new Todo("todo1", "hello spring");
+        Todo todo = new Todo("hello spring",true);
         //when
         Todo savedTodo = todoRepository.save(todo);
         //then
@@ -39,12 +38,12 @@ class TodoRepositoryTest {
     @Test
     void delete() {
         //given
-        Todo todo = new Todo("todo1", "hello spring");
+        Todo todo = new Todo("hello spring", true);
         //when
         Todo savedTodo = todoRepository.save(todo);
         todoRepository.delete(savedTodo.getId());
         List<Todo> result = todoRepository.findAll();
         //then
-        assertThat(result).contains(savedTodo);
+        assertThat(result).doesNotContain(savedTodo);
     }
 }
