@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.PostConstruct;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -67,7 +66,7 @@ public class TodoController {
 
     @PostConstruct
     public void init() {
-        todoRepository.save(new Todo("todoA", "hello spring", true));
-        todoRepository.save(new Todo("todoB", "hello java", false));
+        todoRepository.save(new Todo("hello spring", true));
+        todoRepository.save(new Todo("hello java", false));
     }
 }

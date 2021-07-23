@@ -36,7 +36,6 @@ public class TodoRepository {
 
     public void update(Long todoId, Todo updateParam) {
         Todo findTodo = findById(todoId);
-        findTodo.setTitle(updateParam.getTitle());
         findTodo.setContent(updateParam.getContent());
     }
 

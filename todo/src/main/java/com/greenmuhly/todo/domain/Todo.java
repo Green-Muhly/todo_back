@@ -18,20 +18,14 @@ public class Todo {
     @GeneratedValue
     private Long id;
 
-    private String title;
     private String content;
     private Boolean checked;
     private String createDate;
     private LocalDateTime uploadDate;
 
-    public Todo(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
 
     @Builder
-    public Todo(String title, String content, Boolean checked) {
-        this.title = title;
+    public Todo(String content, Boolean checked) {
         this.content = content;
         this.checked = checked;
     }
