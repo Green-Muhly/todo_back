@@ -18,6 +18,7 @@ public class Todo {
     @GeneratedValue
     private Long id;
 
+
     private String content;
     private Boolean checked;
     private String createDate;
