@@ -21,7 +21,7 @@ public class Todo {
     private String title;
     private String content;
     private Boolean checked;
-    private LocalDateTime createDate;
+    private String createDate;
     private LocalDateTime uploadDate;
 
     public Todo(String title, String content) {
@@ -30,11 +30,9 @@ public class Todo {
     }
 
     @Builder
-    public Todo(Long id, String title, String content, Boolean checked, LocalDateTime createDate) {
-        this.id = id;
+    public Todo(String title, String content, Boolean checked) {
         this.title = title;
         this.content = content;
         this.checked = checked;
-        this.createDate = createDate;
     }
 }

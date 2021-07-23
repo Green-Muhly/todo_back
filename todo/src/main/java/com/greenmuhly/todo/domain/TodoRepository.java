@@ -3,6 +3,8 @@ package com.greenmuhly.todo.domain;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +18,10 @@ public class TodoRepository {
 
     public Todo save(Todo todo) {
         todo.setId(++sequence);
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy년 M월 d일 h시 m분");
+        String dateString = now.format(date);
+        todo.setCreateDate(dateString);
         todoList.put(todo.getId(), todo);
         return todo;
     }

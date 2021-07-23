@@ -32,6 +32,7 @@
       <tr th:each="todo : ${todos}">
         <td><a href="todo.html" th:href="@{|/basic/todos/${todo.id}|}" th:text="${todo.id}">todo id</a></td>
         <td><a href="todo.html" th:href="@{|/basic/todos/${todo.id}|}" th:text="${todo.title}">제목</a></td>
+
         <td th:text="${todo.content}">내용</td>
         <td th:text="${todo.createDate}">날짜</td>
       </tr>
