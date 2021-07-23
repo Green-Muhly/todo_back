@@ -14,7 +14,7 @@
     <div class="col">
       <button class="btn btn-primary float-end"
               onclick="location.href='addForm.html'"
-              th:onclick="|location.href='@{/basic/todos/add}'|"
+              th:onclick="|location.href='@{/v1/todos/add}'|"
               type="button">add Todo</button>
     </div>
   </div>
@@ -23,18 +23,17 @@
     <table class="table">
       <thead>
       <tr> <th>ID</th>
-        <th>제목</th>
         <th>내용</th>
         <th>날짜</th>
+        <th>체크</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="todo : ${todos}">
         <td><a href="todo.html" th:href="@{|/basic/todos/${todo.id}|}" th:text="${todo.id}">todo id</a></td>
-        <td><a href="todo.html" th:href="@{|/basic/todos/${todo.id}|}" th:text="${todo.title}">제목</a></td>
-
         <td th:text="${todo.content}">내용</td>
         <td th:text="${todo.createDate}">날짜</td>
+        <td><input type="checkbox" name = "checked" th:checked="${todo.checked}"/></td>
       </tr>
       </tbody>
     </table>

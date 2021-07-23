@@ -21,6 +21,7 @@ public class Todo {
     private String content;
     private Boolean checked;
     private String createDate;
+
     private LocalDateTime uploadDate;
 
 

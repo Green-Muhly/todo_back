@@ -24,6 +24,7 @@ public class TodoController {
     public String todos(Model model) {
         List<Todo> todos = todoRepository.findAll();
         model.addAttribute("todos", todos);
+        log.info("todoRepository={}", todos);
         return "v1/todos";
     }
 
@@ -40,11 +41,11 @@ public class TodoController {
     }
 
     @PostMapping("/add")
-    public String addtodo(Todo todo, RedirectAttributes redirectAttributes) {
+    public String addTodo(Todo todo, RedirectAttributes redirectAttributes) {
         Todo savedTodo = todoRepository.save(todo);
-        redirectAttributes.addAttribute("todoId", savedTodo);
+        redirectAttributes.addAttribute("todoId", savedTodo.getId());
         redirectAttributes.addAttribute("status", true);
-        return "redirect:/v1/todos/{todoId}";
+        return "redirect:/v1/todos";
     }
 
     @GetMapping("/{todoId}/edit")
