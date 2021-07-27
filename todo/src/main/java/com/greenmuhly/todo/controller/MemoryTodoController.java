@@ -16,7 +16,7 @@ import java.util.List;
 @Controller
 @RequestMapping("v1/todos")
 @RequiredArgsConstructor
-public class TodoController {
+public class MemoryTodoController {
 
     private final MemoryTodoRepository memoryTodoRepository;
 
@@ -60,6 +60,13 @@ public class TodoController {
         memoryTodoRepository.update(todoId, todo);
         return "redirect:v1/todos/{todoId}";
     }
+
+    @DeleteMapping("/{todoId}")
+    public String delete(@PathVariable("id") Long todoId) {
+        memoryTodoRepository.delete(todoId);
+        return "redirect:v1/todos";
+    }
+
 
     /**
      * 테스트용 데이터 추가
