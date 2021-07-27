@@ -7,13 +7,14 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-class TodoRepositoryTest {
 
-    TodoRepository todoRepository = new TodoRepository();
+class MemoryTodoRepositoryTest {
+
+    MemoryTodoRepository memoryTodoRepository = new MemoryTodoRepository();
 
     @AfterEach
     void afterEach() {
-        todoRepository.clearTodoList();
+        memoryTodoRepository.clearTodoList();
     }
 
     @Test
@@ -21,9 +22,9 @@ class TodoRepositoryTest {
         //given
         Todo todo = new Todo("hello spring",true);
         //when
-        Todo savedTodo = todoRepository.save(todo);
+        Todo savedTodo = memoryTodoRepository.save(todo);
         //then
-        Todo findTodo = todoRepository.findById(todo.getId());
+        Todo findTodo = memoryTodoRepository.findById(todo.getId());
         assertThat(findTodo).isEqualTo(savedTodo);
     }
 
@@ -40,9 +41,9 @@ class TodoRepositoryTest {
         //given
         Todo todo = new Todo("hello spring", true);
         //when
-        Todo savedTodo = todoRepository.save(todo);
-        todoRepository.delete(savedTodo.getId());
-        List<Todo> result = todoRepository.findAll();
+        Todo savedTodo = memoryTodoRepository.save(todo);
+        memoryTodoRepository.delete(savedTodo.getId());
+        List<Todo> result = memoryTodoRepository.findAll();
         //then
         assertThat(result).doesNotContain(savedTodo);
     }

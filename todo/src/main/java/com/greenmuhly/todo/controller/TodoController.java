@@ -1,7 +1,7 @@
 package com.greenmuhly.todo.controller;
 
 import com.greenmuhly.todo.domain.Todo;
-import com.greenmuhly.todo.domain.TodoRepository;
+import com.greenmuhly.todo.domain.MemoryTodoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,11 +18,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TodoController {
 
-    private final TodoRepository todoRepository;
+    private final MemoryTodoRepository memoryTodoRepository;
 
     @GetMapping
     public String todos(Model model) {
-        List<Todo> todos = todoRepository.findAll();
+        List<Todo> todos = memoryTodoRepository.findAll();
         model.addAttribute("todos", todos);
         log.info("todoRepository={}", todos);
         return "v1/todos";
@@ -30,7 +30,7 @@ public class TodoController {
 
     @GetMapping("/{todoId}")
     public String todo(@PathVariable long todoId, Model model) {
-        Todo todo = todoRepository.findById(todoId);
+        Todo todo = memoryTodoRepository.findById(todoId);
         model.addAttribute("todo", todo);
         return "v1/todo";
     }
@@ -42,7 +42,7 @@ public class TodoController {
 
     @PostMapping("/add")
     public String addTodo(Todo todo, RedirectAttributes redirectAttributes) {
-        Todo savedTodo = todoRepository.save(todo);
+        Todo savedTodo = memoryTodoRepository.save(todo);
         redirectAttributes.addAttribute("todoId", savedTodo.getId());
         redirectAttributes.addAttribute("status", true);
         return "redirect:/v1/todos";
@@ -50,14 +50,14 @@ public class TodoController {
 
     @GetMapping("/{todoId}/edit")
     public String editForm(@PathVariable Long todoId, Model model) {
-        Todo todo = todoRepository.findById(todoId);
+        Todo todo = memoryTodoRepository.findById(todoId);
         model.addAttribute("todo", todo);
         return "v1/editForm";
     }
 
     @PostMapping("/{todoId}/edit")
     public String edit(@PathVariable Long todoId, @ModelAttribute Todo todo) {
-        todoRepository.update(todoId, todo);
+        memoryTodoRepository.update(todoId, todo);
         return "redirect:v1/todos/{todoId}";
     }
 
@@ -67,7 +67,7 @@ public class TodoController {
 
     @PostConstruct
     public void init() {
-        todoRepository.save(new Todo("hello spring", true));
-        todoRepository.save(new Todo("hello java", false));
+        memoryTodoRepository.save(new Todo("hello spring", true));
+        memoryTodoRepository.save(new Todo("hello java", false));
     }
 }

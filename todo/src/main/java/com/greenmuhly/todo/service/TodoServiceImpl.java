@@ -1,18 +1,15 @@
 package com.greenmuhly.todo.service;
 
 import com.greenmuhly.todo.domain.Todo;
-import com.greenmuhly.todo.domain.TodoRepository;
+import com.greenmuhly.todo.domain.MemoryTodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class TodoServiceImpl implements TodoService{
 
     @Autowired
-    private TodoRepository todoRepository;
+    private MemoryTodoRepository memoryTodoRepository;
 
 
 
