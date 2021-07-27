@@ -3,6 +3,7 @@ package com.greenmuhly.todo.domain;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -20,7 +21,7 @@ class MemoryTodoRepositoryTest {
     @Test
     void save() {
         //given
-        Todo todo = new Todo("hello spring",true);
+        Todo todo = new Todo(1L,"hello spring",true, LocalDateTime.now());
         //when
         Todo savedTodo = memoryTodoRepository.save(todo);
         //then
@@ -39,7 +40,7 @@ class MemoryTodoRepositoryTest {
     @Test
     void delete() {
         //given
-        Todo todo = new Todo("hello spring", true);
+        Todo todo = new Todo(1L,"hello spring",true, LocalDateTime.now());
         //when
         Todo savedTodo = memoryTodoRepository.save(todo);
         memoryTodoRepository.delete(savedTodo.getId());

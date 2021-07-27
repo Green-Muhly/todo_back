@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
@@ -15,20 +16,21 @@ import java.time.LocalDateTime;
 public class Todo {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
     private String content;
     private Boolean checked;
-    private String createDate;
+    private LocalDateTime createDate;
 
     private LocalDateTime uploadDate;
 
-
     @Builder
-    public Todo(String content, Boolean checked) {
+    public Todo(Long id, String content, Boolean checked, LocalDateTime createDate) {
+        this.id = id;
         this.content = content;
         this.checked = checked;
+        this.createDate = createDate;
     }
 }

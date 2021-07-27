@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -74,7 +75,7 @@ public class MemoryTodoController {
 
     @PostConstruct
     public void init() {
-        memoryTodoRepository.save(new Todo("hello spring", true));
-        memoryTodoRepository.save(new Todo("hello java", false));
+        memoryTodoRepository.save(new Todo(1L,"A",true, LocalDateTime.now()));
+        memoryTodoRepository.save(new Todo(2L, "B", false, LocalDateTime.now()));
     }
 }
