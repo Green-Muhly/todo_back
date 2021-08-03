@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/todolist?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://todolist.c55jrjs9yxoi.ap-northeast-2.rds.amazonaws.com:3306/todolist?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: qwer1234
 
@@ -12,6 +12,7 @@ spring:
       hibernate:
         #        show_sql: true
         format_sql: true
+    database: mysql
 
 logging.level:
   org.hibernate.SQL: debug
