@@ -18,13 +18,13 @@ logging.level:
   org.hibernate.SQL: debug
 #  org.hibernate.type: trace
 
-server:
-  port: 443
-  ssl:
-    enabled: true
-    key-store: src/main/resources/todolist.p12
-    key-store-password: qwer1234
-    key-store-type: PKCS12
-    key-alias: todolist
+#server:
+#  port: 443
+#  ssl:
+#    enabled: true
+#    key-store: src/main/resources/todolist.p12
+#    key-store-password: qwer1234
+#    key-store-type: PKCS12
+#    key-alias: todolist
 
 

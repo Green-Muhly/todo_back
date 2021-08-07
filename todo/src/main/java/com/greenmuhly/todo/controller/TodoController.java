@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/muhly/todos")
-@CrossOrigin(origins = "http://localhost:5000")
+@CrossOrigin(origins = "http://54.180.9.121:5000")
 public class TodoController {
 
     @Autowired
