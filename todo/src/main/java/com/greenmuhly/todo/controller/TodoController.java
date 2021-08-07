@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/muhly/todos")
+@CrossOrigin(origins = "https://pwa-vue-first.web.app/")
 public class TodoController {
 
     @Autowired
