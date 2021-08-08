@@ -23,17 +23,24 @@ public class TodoApplication {
 		SpringApplication.run(TodoApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner runner(TodoRepository todoRepository) throws  Exception {
-		return args -> {
-			IntStream.rangeClosed(1, 10).forEach(index -> todoRepository.save(Todo.builder()
-					.content("오늘 할 일" + index)
-					.createDate(LocalDateTime.now())
-					.checked(false)
-					.build())
-			);
-		};
-	}
+
+
+
+	/**
+	 * 시작할 때 데이터 입력
+	 * ex) 오늘 할일1, 현재시간, 체크X
+	 */
+//	@Bean
+//	public CommandLineRunner runner(TodoRepository todoRepository) throws  Exception {
+//		return args -> {
+//			IntStream.rangeClosed(1, 10).forEach(index -> todoRepository.save(Todo.builder()
+//					.content("오늘 할 일" + index)
+//					.createDate(LocalDateTime.now())
+//					.checked(false)
+//					.build())
+//			);
+//		};
+//	}
 
 //	@Bean
 //	public ServletWebServerFactory servletContainer() {
