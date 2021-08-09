@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -26,7 +28,7 @@ public class TodoRepositoryTest {
     private Todo getSaved(){
         Todo todo = Todo.builder()
                 .content(content)
-                .createDate(LocalDateTime.now())
+                .createDate(ZonedDateTime.now(ZoneId.of("Asia/Seoul")))
                 .build();
         return em.persist(todo);
     }

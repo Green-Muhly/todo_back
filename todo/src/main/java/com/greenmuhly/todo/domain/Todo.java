@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Data
 @Entity
@@ -22,12 +23,12 @@ public class Todo {
 
     private String content;
     private Boolean checked;
-    private LocalDateTime createDate;
+    private ZonedDateTime createDate;
 
-    private LocalDateTime uploadDate;
+    private ZonedDateTime uploadDate;
 
     @Builder
-    public Todo(Long id, String content, Boolean checked, LocalDateTime createDate) {
+    public Todo(Long id, String content, Boolean checked, ZonedDateTime createDate) {
         this.id = id;
         this.content = content;
         this.checked = checked;

@@ -10,11 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 @RestController
 @RequestMapping("/muhly/todos")
-@CrossOrigin(origins = "http://54.180.9.121:5000")
+@CrossOrigin(origins = "http://www.mohai.kro.kr:5000")
 public class TodoController {
 
     @Autowired
@@ -28,7 +30,7 @@ public class TodoController {
 
     @PostMapping
     public ResponseEntity<String> postTodo(@RequestBody Todo todo) throws Exception {
-        todo.setCreateDate(LocalDateTime.now());
+        todo.setCreateDate(ZonedDateTime.now(ZoneId.of("Asia/Seoul")));
         todo.setChecked(false);
         todoService.postTodo(todo);
         return new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
