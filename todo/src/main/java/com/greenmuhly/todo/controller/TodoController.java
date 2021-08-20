@@ -22,7 +22,7 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     public ResponseEntity<?> getTodos() throws Exception {
         List<Todo> todos = todoService.getTodos(Sort.by(Sort.Direction.ASC, "id"));
         return ResponseEntity.ok(todos);
